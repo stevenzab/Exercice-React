@@ -7,10 +7,19 @@ function Book() {
 
   const AddPage = () => {
     setPages([...pages, { type: 'text', content: '' }]);
+    localStorage.setItem('pages', JSON.stringify(pages));
   };
+
+  React.useEffect(() => {
+    const savedPages = localStorage.getItem('pages');
+    if (savedPages) {
+      setPages(JSON.parse(savedPages));
+    }
+  }, []);
 
   const AddImagePage = () => {
     setPages([...pages, { type: 'image', content: '' }]);
+    localStorage.setItem('pages', JSON.stringify(pages));
   };
 
   const EditPage = (index: number, newContent: string) => {
@@ -25,6 +34,8 @@ function Book() {
     setPages(prevPages => {
       const newPages = [...prevPages];
       newPages.splice(index, 1);
+      localStorage.removeItem('pages')
+      localStorage.setItem('pages', JSON.stringify(newPages));
       return newPages;
     });
   };
