@@ -7,7 +7,6 @@ function Book() {
 
   const AddPage = () => {
     setPages([...pages, { type: 'text', content: '' }]);
-    // localStorage.setItem('pages', JSON.stringify(pages));
   };
 
   React.useEffect(() => {
