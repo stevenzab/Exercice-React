@@ -7,7 +7,7 @@ function Book() {
 
   const AddPage = () => {
     setPages([...pages, { type: 'text', content: '' }]);
-    localStorage.setItem('pages', JSON.stringify(pages));
+    // localStorage.setItem('pages', JSON.stringify(pages));
   };
 
   React.useEffect(() => {
@@ -26,6 +26,7 @@ function Book() {
     setPages(prevPages => {
       const newPages = [...prevPages];
       newPages[index].content = newContent;
+      localStorage.setItem('pages', JSON.stringify(newPages));
       return newPages;
     });
   };
