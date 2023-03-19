@@ -1,6 +1,7 @@
 import React from "react";
 import { IPage } from './interface'
 import '../styles/page.css';
+import ok from "../assets/ok.jpg";
 
 function Book() {
   const [pages, setPages] = React.useState<IPage[]>([]);
@@ -17,8 +18,8 @@ function Book() {
   }, []);
 
   const AddImagePage = () => {
-    setPages([...pages, { type: 'image', content: '' }]);
-    localStorage.setItem('pages', JSON.stringify(pages));
+      setPages([...pages, { type: 'image', content: '' }]);
+      localStorage.setItem('pages', JSON.stringify(pages));
   };
 
   const EditPage = (index: number, newContent: string) => {
@@ -52,7 +53,7 @@ function Book() {
                 onChange={(e) => EditPage(index, e.target.value)}
               />
             ) : (
-              <img className="image-content" src={page.content} alt="book-imagee" />
+              <img className="image-content" src={ok} alt="book-imagee" />
             )}
             <button className="delete-page" onClick={() => DeletePage(index)}>
               Delete Page
